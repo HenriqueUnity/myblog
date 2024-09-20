@@ -1,7 +1,8 @@
-import PostCard from "@/components/PostCard";
+import PostCard, { IPost } from "@/components/PostCard";
 import Header from "../components/Header";
+import { getPosts } from "@/actions/getPost";
 
-export default function Home() {
+export default async function Home() {
   const SamplePost = {
     slug: "welcome-short",
     id: "5ddc9141c35e7700383b2937",
@@ -23,7 +24,7 @@ export default function Home() {
       },
     ],
   };
-
+  const posts: IPost[] = await getPosts();
   return (
     <div className="px-10 md:px-40 bg-slate-800 text-white min-h-screen">
       <Header />
@@ -31,12 +32,10 @@ export default function Home() {
         <div className="hidden">
           <PostCard data={SamplePost} />
         </div>
-        <PostCard data={SamplePost} />
-        <PostCard data={SamplePost} />
-        <PostCard data={SamplePost} />
-        <PostCard data={SamplePost} />
-        <PostCard data={SamplePost} />
-        <PostCard data={SamplePost} />
+
+        {posts.map((post, idx) => (
+          <PostCard key={idx} data={post} />
+        ))}
       </div>
     </div>
   );

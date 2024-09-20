@@ -8,8 +8,8 @@ const nextConfig = {
         pathname: "**",
       },
       {
-        protocol: "https",
-        hostname: "static.ghost.org",
+        protocol: "http",
+        hostname: "http://localhost:2368",
         pathname: "**",
       },
     ],
