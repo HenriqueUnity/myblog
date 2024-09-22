@@ -1,6 +1,5 @@
 "use server";
 
-import tags from "@/app/tags/page";
 import { ITag } from "@/components/PostCard";
 
 export async function getTags() {
@@ -11,6 +10,7 @@ export async function getTags() {
     const data = await res.json();
     return { data, status };
   });
+
   if (tagsResponse.status != 200) {
     console.log(tagsResponse.data.errors);
     return [];

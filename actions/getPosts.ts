@@ -2,13 +2,13 @@
 
 import { IPost } from "@/components/PostCard";
 
-export async function getPostsByTag(tagSlug: string) {
+export async function getPosts() {
   let posts;
 
   const fields =
     "slug,title,feature_image,feature_image_alt,published_at,updated_at,excerpt,reading_time";
 
-  const postsUrl = `${process.env.GHOST_API_URL}/ghost/api/content/posts/?key=${process.env.GHOST_CONTENT_API_KEY}&include=tags,authors&order=published_at%20desc&fields=${fields}&filter=tag:${tagSlug}`;
+  const postsUrl = `${process.env.GHOST_API_URL}/ghost/api/content/posts/?key=${process.env.GHOST_CONTENT_API_KEY}&include=tags,authors&order=published_at%20desc&fields=${fields}`;
 
   const postsResponse = await fetch(postsUrl).then(async function (res) {
     const status = res.status;
